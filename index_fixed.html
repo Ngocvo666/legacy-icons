@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LEGACY — From Tiles to Contemporary Icons</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #F4E8D3;
+    color: #4A3325;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    text-align: center;
+    padding: 55px 20px 35px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 36px;
+    letter-spacing: 8px;
+    font-weight: 600;
+}
+
+.subtitle {
+    margin-top: 12px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #806653;
+}
+
+.grid {
+    width: min(1100px, 90%);
+    margin: 20px auto 70px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.card {
+    background: #FFF8ED;
+    border-radius: 18px;
+    padding: 25px;
+
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 5px 18px rgba(74, 51, 37, 0.08);
+
+    transition: 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(74, 51, 37, 0.15);
+}
+
+.card img {
+    width: 86%;
+    height: 86%;
+    object-fit: contain;
+    transition: 0.18s ease;
+}
+
+.card:hover img {
+    transform: scale(1.03);
+}
+
+@media (max-width: 750px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>LEGACY</h1>
+    <div class="subtitle">From Tiles to Contemporary Icons</div>
+</header>
+
+<main class="grid">
+
+    <div class="card">
+        <img src="Artboard 1.svg"
+             data-normal="Artboard 1.svg"
+             data-hover="Artboard 2.svg">
+    </div>
+
+    <div class="card">
+        <img src="Artboard 3.svg"
+             data-normal="Artboard 3.svg"
+             data-hover="Artboard 4.svg">
+    </div>
+
+    <div class="card">
+        <img src="Artboard 5.svg"
+             data-normal="Artboard 5.svg"
+             data-hover="Artboard 6.svg">
+    </div>
+
+    <div class="card">
+        <img src="Artboard 7.svg"
+             data-normal="Artboard 7.svg"
+             data-hover="Artboard 8.svg">
+    </div>
+
+    <div class="card">
+        <img src="Artboard 9.svg"
+             data-normal="Artboard 9.svg"
+             data-hover="Artboard 10.svg">
+    </div>
+
+    <div class="card">
+        <img src="Artboard 11.svg"
+             data-normal="Artboard 11.svg"
+             data-hover="Artboard 12.svg">
+    </div>
+
+    <div class="card">
+        <img src="Artboard 13.svg"
+             data-normal="Artboard 13.svg"
+             data-hover="Artboard 14.svg">
+    </div>
+
+    <div class="card">
+        <img src="Artboard 15.svg"
+             data-normal="Artboard 15.svg"
+             data-hover="Artboard 16.svg">
+    </div>
+
+    <div class="card">
+        <img src="Artboard 17.svg"
+             data-normal="Artboard 17.svg"
+             data-hover="Artboard 18.svg">
+    </div>
+
+</main>
+
+<script>
+
+const sounds = [
+    new Audio("n1.mp3"),
+    new Audio("n2.mp3"),
+    new Audio("n3.mp3"),
+    new Audio("n4.mp3"),
+    new Audio("n5.mp3"),
+    new Audio("n6.mp3"),
+    new Audio("n7.mp3"),
+    new Audio("n8.mp3"),
+    new Audio("n9.mp3")
+];
+
+function playRandomSound() {
+
+    const sound = sounds[
+        Math.floor(Math.random() * sounds.length)
+    ];
+
+    sound.currentTime = 0;
+    sound.play().catch(() => {});
+
+}
+
+document.querySelectorAll(".card").forEach(card => {
+
+    const image = card.querySelector("img");
+
+    card.addEventListener("mouseenter", () => {
+
+        image.src = image.dataset.hover;
+
+        playRandomSound();
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        image.src = image.dataset.normal;
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
